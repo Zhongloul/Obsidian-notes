@@ -1,3 +1,4 @@
 site-index trigger
 collapsible nav v2
 resizer
+dirfix
