@@ -4,51 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "235bd4c5a38007bd",
+        "id": "ccd3096bf4fed9cc",
         "type": "tabs",
         "children": [
           {
-            "id": "dc2631cb87db8e0b",
+            "id": "99873c2595b8e4f8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "USB/HID报表描述符.md",
+                "file": "CIS/从HCI层浅析LE Audio通话建立流程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HID报表描述符"
-            }
-          },
-          {
-            "id": "912691099bad0e70",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "USB/简单几步，让自定义USB设备也能免驱动运行.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "简单几步，让自定义USB设备也能免驱动运行"
-            }
-          },
-          {
-            "id": "8fe7be5e9ddb38fe",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "cpu/从电路底层来了解CPU中断机制 - 知乎.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "从电路底层来了解CPU中断机制 - 知乎"
+              "title": "从HCI层浅析LE Audio通话建立流程"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,8 +55,8 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "USB/简单几步，让自定义USB设备也能免驱动运行.md",
-                "followCursor": false,
+                "file": "CIS/从HCI层浅析LE Audio通话建立流程.md",
+                "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
@@ -212,11 +185,11 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "daily-notes:打开/创建今天的日记": true,
+      "canvas:新建白板": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
+      "templates:插入模板": true,
       "command-palette:打开命令面板": false,
       "bases:新建数据库": false,
       "obsidian-importer:导入笔记": false,
@@ -224,8 +197,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8fe7be5e9ddb38fe",
+  "active": "99873c2595b8e4f8",
   "lastOpenFiles": [
+    "CIS/从HCI层浅析LE Audio通话建立流程.md",
+    "CIS/结合实例从空口分析LE AUDIO ISO（音乐和通话）.md",
+    "充电相关/锂电池充电基础知识.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "2026-09-09.md",
+    "USB/HID报表描述符.md",
+    "USB/简单几步，让自定义USB设备也能免驱动运行.md",
+    "CPU/从电路底层来了解CPU中断机制 - 知乎.pdf",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
     "docs/cpu/从电路底层来了解cpu中断机制-知乎.pdf",
@@ -234,8 +216,6 @@
     "HID报表描述符/使用微软系统描述符2.0制作免驱动自定义USB设备.md",
     "HID报表描述符/简单几步，让自定义USB设备也能免驱动运行.md",
     "USB/使用微软系统描述符2.0制作免驱动自定义USB设备.md",
-    "USB/HID报表描述符.md",
-    "USB/简单几步，让自定义USB设备也能免驱动运行.md",
     "CIS/VCS(Volume Control Profile).md",
     "CIS/PAC(Published Audio Capability).md",
     "CIS/CSIS(Coordinate Sets Identification service).md",
@@ -245,18 +225,13 @@
     "CIS/通话TBS和CCP.md",
     "CIS/结合HCI和空口理解 CIS.md",
     "CIS/结合实例从HCI分析LE AUDIO实现立体声录音.md",
-    "CIS/结合实例从空口分析LE AUDIO ISO（音乐和通话）.md",
-    "CIS/从HCI层浅析LE Audio通话建立流程.md",
     "BIS/结合Ellisys空口实例分析LE AUDIO BIS广播.md",
     "蓝牙/SBC编码.md",
     "蓝牙/BR／EDR通信机制.md",
     "蓝牙/BLE通信机制.md",
     "蓝牙/音乐间接性卡顿.md",
-    "cpu/虚拟地址和逻辑地址.md",
-    "充电相关/锂电池充电基础知识.md",
-    "cpu/lx芯片框架概述.md",
+    "CPU/虚拟地址和逻辑地址.md",
     "cpu/芯片框架简述.pdf",
-    "cpu/从电路底层来了解CPU中断机制 - 知乎.pdf",
     "cpu/assets/芯片框架简述-20260720141335-0ffkvga.pdf",
     "充电相关/assets/image-20260720144545-3v3ftvh.png",
     "充电相关/assets",
@@ -268,7 +243,6 @@
     "CIS/assets/bluetooth-diagram 2-20260729201104-v0rviae.png",
     "CIS/assets",
     "docs/site-lib/fonts/mathjax_sansserif-bold.woff",
-    "docs/site-lib/fonts/mathjax_vector-regular.woff",
     "docs/cpu/assets/image-20260720141439-hvllxye.png",
     "docs/cis/assets/image-20260731105001-qugz4ud.png",
     "docs/cis/assets/image-20260724141443-ewj95po.png"

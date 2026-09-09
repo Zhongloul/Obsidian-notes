@@ -1,4 +1,21 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[clock_note]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>clock_note</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 09 Sep 2026 11:51:53 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 09 Sep 2026 11:51:35 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[CAP架构图]]></title><link>cis/cap架构图.html</link><guid isPermaLink="false">CIS/CAP架构图.md</guid><pubDate>Wed, 09 Sep 2026 11:51:18 GMT</pubDate></item><item><title><![CDATA[transport delay]]></title><description><![CDATA[Transport_Latency_C_To_P = CIG_Sync_Delay + (FT_C_To_P – 1) ×ISO_Interval + (USPI_C_To_P – 1) ×SDU_Interval_C_To_P USPI = Number of SDUs Per ISO interval
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[clock_note]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>clock_note</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 09 Sep 2026 11:58:58 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 09 Sep 2026 11:58:57 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[从HCI层浅析LE Audio通话建立流程]]></title><description><![CDATA[BLE AUDIO音乐播放已经调通了，接下来调试BLE AUDIO的通话，BLE AUDIO通话跟音乐协议类似，都是走CIS链路，也是用同样的codec，比经典蓝牙音乐和通话分别采用不同的A2DP和HFP显得协调多了，下面还是以手机和2个蓝牙耳机为例，结合HCI LOG来分析LE AUDIO通话协议的建立：
+当我们开始拨通电话号码，对方响铃的时候，手机会通过前面建立的CCP EATT链路通知耳机准备好进行通话：
+<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+紧接着手机会把音乐的ASE disable，然后断开前面建立的两个CIS，同时去除CIG：
+<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/1b4bef1938cd480caa41c03aabaae3b6.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+接下来就开始建立通话的CIG：
+<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/e51827a5063643a29a47d89ccd4edf48.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+注意上面红色框框，比较和音乐的CIG的区别发现，MAX SDU SIZE由155变成了80，RTN（重传次数）由13变成了2，说明通话更加注重时效性。
+下来会设4条Setup ISO Data Path命令：
+<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/f3c3478d803349b687b9c184ecd0b78c.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+这里比前面音乐也多了两条，因为通话是双向的，音乐是单向，每个方向都要单独设置一条命令，所以2个耳机是4条命令。
+接下来会通过ASE Control 命令去enable 2个相关ASE，尤其要注意右边红色框框的Audio data context
+type由音乐的Media变成了conversational，这个就代表这当前应用场景是通话，而不是音乐
+<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/10ebd7a63fb8448cb191568302b389b0.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+<br>接下来耳机会通知手机ASE端口已经准备好了，手机就可以建立CIS连接了： <img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/7898cb631abb4c559997bd882bafb620.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+接下来手机会发送ASE命令 Receiver start ready做通话前的最后同步，耳机回复ACK后，双方就可以进行愉快的通话啦：<br>
+​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/c3ce0886d6d4479884f113171baadc72.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
+]]></description><link>cis/从hci层浅析le-audio通话建立流程.html</link><guid isPermaLink="false">CIS/从HCI层浅析LE Audio通话建立流程.md</guid><pubDate>Wed, 09 Sep 2026 11:57:32 GMT</pubDate><enclosure url="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[CAP架构图]]></title><link>cis/cap架构图.html</link><guid isPermaLink="false">CIS/CAP架构图.md</guid><pubDate>Wed, 09 Sep 2026 11:51:18 GMT</pubDate></item><item><title><![CDATA[transport delay]]></title><description><![CDATA[Transport_Latency_C_To_P = CIG_Sync_Delay + (FT_C_To_P – 1) ×ISO_Interval + (USPI_C_To_P – 1) ×SDU_Interval_C_To_P USPI = Number of SDUs Per ISO interval
 含义：一个CIS事件窗口内，最多可以排队发送多少个SDU
 约束：Unframed模式下，ISO_Interval必须是SDU_Interval整数倍，USPI是正整数。 SDU 规律：上层每隔 SDU_Interval​ 产生一帧SDU（音频帧）
 CIS传输窗口：每隔 ISO_Interval 才打开一次射频发包窗口 SDU_Interval = 5 ms（上层每5ms生成1个音频SDU）
@@ -148,24 +165,7 @@ SBC 使用子带编码，将音频分成多个频段（subbands）
 再看下BIS ISOC数据帧的内容：<br>
 ​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/9c06f5107881467e91d5b9a3fe2cbb77.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
 这个里面我们只有一个参数比较陌生了，那就是BIG Sync Delay, 关于这个参数，BT core spec有描述：<br>
-​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/8ef448248cd24d748fbfe9c10d37717e.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">‍]]></description><link>bis/结合ellisys空口实例分析le-audio-bis广播.html</link><guid isPermaLink="false">BIS/结合Ellisys空口实例分析LE AUDIO BIS广播.md</guid><pubDate>Wed, 09 Sep 2026 09:20:34 GMT</pubDate><enclosure url="https://i-blog.csdnimg.cn/direct/56622f2c317e4b0fac8955172228e992.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/56622f2c317e4b0fac8955172228e992.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[从HCI层浅析LE Audio通话建立流程]]></title><description><![CDATA[‍BLE AUDIO音乐播放已经调通了，接下来调试BLE AUDIO的通话，BLE AUDIO通话跟音乐协议类似，都是走CIS链路，也是用同样的codec，比经典蓝牙音乐和通话分别采用不同的A2DP和HFP显得协调多了，下面还是以手机和2个蓝牙耳机为例，结合HCI LOG来分析LE AUDIO通话协议的建立：
-当我们开始拨通电话号码，对方响铃的时候，手机会通过前面建立的CCP EATT链路通知耳机准备好进行通话：
-<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-紧接着手机会把音乐的ASE disable，然后断开前面建立的两个CIS，同时去除CIG：
-<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/1b4bef1938cd480caa41c03aabaae3b6.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-接下来就开始建立通话的CIG：
-<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/e51827a5063643a29a47d89ccd4edf48.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-注意上面红色框框，比较和音乐的CIG的区别发现，MAX SDU SIZE由155变成了80，RTN（重传次数）由13变成了2，说明通话更加注重时效性。
-下来会设4条Setup ISO Data Path命令：
-<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/f3c3478d803349b687b9c184ecd0b78c.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-这里比前面音乐也多了两条，因为通话是双向的，音乐是单向，每个方向都要单独设置一条命令，所以2个耳机是4条命令。
-接下来会通过ASE Control 命令去enable 2个相关ASE，尤其要注意右边红色框框的Audio data context
-type由音乐的Media变成了conversational，这个就代表这当前应用场景是通话，而不是音乐
-<br><img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/10ebd7a63fb8448cb191568302b389b0.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-<br>接下来耳机会通知手机ASE端口已经准备好了，手机就可以建立CIS连接了： <img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/7898cb631abb4c559997bd882bafb620.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-接下来手机会发送ASE命令 Receiver start ready做通话前的最后同步，耳机回复ACK后，双方就可以进行愉快的通话啦：<br>
-​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/c3ce0886d6d4479884f113171baadc72.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">
-]]></description><link>cis/从hci层浅析le-audio通话建立流程.html</link><guid isPermaLink="false">CIS/从HCI层浅析LE Audio通话建立流程.md</guid><pubDate>Wed, 09 Sep 2026 09:20:25 GMT</pubDate><enclosure url="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/dc3383aa77324d668c00bb76b67270a1.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[结合实例从空口分析LE AUDIO ISO（音乐和通话）]]></title><description><![CDATA[ISO ：isochoronous channel，Bluetooth LE AUDIO引入的同步通道，可以简单的理解为接收方需要在严格的时间范围内接收并确认数据，否则发送方就会丢弃，这样就能保住音频数据的时效性，尤其是对与语音通话更为重要。
+​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/8ef448248cd24d748fbfe9c10d37717e.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">‍]]></description><link>bis/结合ellisys空口实例分析le-audio-bis广播.html</link><guid isPermaLink="false">BIS/结合Ellisys空口实例分析LE AUDIO BIS广播.md</guid><pubDate>Wed, 09 Sep 2026 09:20:34 GMT</pubDate><enclosure url="https://i-blog.csdnimg.cn/direct/56622f2c317e4b0fac8955172228e992.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="https://i-blog.csdnimg.cn/direct/56622f2c317e4b0fac8955172228e992.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[结合实例从空口分析LE AUDIO ISO（音乐和通话）]]></title><description><![CDATA[ISO ：isochoronous channel，Bluetooth LE AUDIO引入的同步通道，可以简单的理解为接收方需要在严格的时间范围内接收并确认数据，否则发送方就会丢弃，这样就能保住音频数据的时效性，尤其是对与语音通话更为重要。
 接下来我们还是以手机和耳机为例，通过空口来分析ISO数据包，这里会有两个场景：音乐和通话，看看他们之间的ISO数据包有何区别。在手机发起传输ISO音乐帧之前，耳机会通过EATT Notification通知手机，相关ASE（ID==2）可以streaming了，如下图CIS 0和CIS 1 Media streaming：
 ​<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/25907b92148f4b46bdcd77c6f8c20c94.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"><br>
 接下来看看ISO数据包的发包状态：<img alt="在这里插入图片描述" src="https://i-blog.csdnimg.cn/direct/37e0965ce9f44621808b9973fd0c8ff3.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved">从上图绿色框看到ISO数据在传输的时候是交替传输，CIS0–&gt;CIS1–&gt;CIS0–&gt;CIS1,单个ISO数据payload都是155个字节，以20ms为一个ISO interval(CIG发包周期)，包含CIS0的两个单向包，和CIS1的两个单向包。
