@@ -3,7 +3,9 @@ import { join } from "node:path";
 
 const docsDir = new URL("../docs", import.meta.url).pathname;
 const outPath = join(docsDir, "index.html");
-const homePath = join(docsDir, "Home.html");
+const lowerFiles = readdirSync(docsDir).map((n) => n.toLowerCase());
+const hasHome = lowerFiles.includes("home.html") || lowerFiles.includes("home.htm");
+const homePath = join(docsDir, "home.html");
 
 function collect(dir, prefix, out) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -18,7 +20,7 @@ function collect(dir, prefix, out) {
 }
 
 let page;
-if (existsSync(homePath)) {
+if (hasHome) {
   page = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
