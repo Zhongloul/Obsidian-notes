@@ -9,6 +9,9 @@
   body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: #f6f8fb; color: #26324d; }
   .layout { display: flex; min-height: 100vh; }
   #sidebar { width: 300px; flex-shrink: 0; background: #ffffff; border-right: 1px solid #e6e9f2; padding: 18px 14px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  #resizer { width: 6px; flex-shrink: 0; cursor: col-resize; background: transparent; transition: background .15s; }
+  #resizer:hover, #resizer.active { background: #c7d0f4; }
+  body.resizing { cursor: col-resize; user-select: none; }
   .brand { font-size: 18px; font-weight: 700; padding: 0 6px 12px; }
   #search { width: 100%; padding: 9px 12px; border: 1px solid #dde2ee; border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 12px; }
   #search:focus { border-color: #7a8cff; }
@@ -47,6 +50,7 @@
     <input id="search" type="search" placeholder="搜索笔记..." autocomplete="off">
     <nav id="tree"></nav>
   </aside>
+  <div id="resizer"></div>
   <main>
     <h1>我的笔记</h1>
     <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧为导航，上方可搜索）</div>
@@ -60,6 +64,8 @@
   var tree = document.getElementById("tree");
   var cards = document.getElementById("cards");
   var search = document.getElementById("search");
+  var resizer = document.getElementById("resizer");
+  var sidebar = document.getElementById("sidebar");
   var items = [];
 
   function build() {
@@ -68,6 +74,46 @@
     items = DATA.map(function (d) { return { key: d[0], folder: d[1], label: d[2], path: d[3] }; });
   }
   build();
+
+  resizer.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    var startX = e.clientX;
+    var startW = sidebar.getBoundingClientRect().width;
+    resizer.classList.add("active");
+    document.body.classList.add("resizing");
+    function onMove(ev) {
+      var w = startW + (startX - ev.clientX);
+      if (w < 220) w = 220;
+      if (w > 480) w = 480;
+      sidebar.style.width = w + "px";
+    }
+    function onUp() {
+      resizer.classList.remove("active");
+      document.body.classList.remove("resizing");
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onUp);
+    }
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+  });
+  resizer.addEventListener("touchstart", function (e) {
+    var t = e.touches[0];
+    var startX = t.clientX;
+    var startW = sidebar.getBoundingClientRect().width;
+    resizer.classList.add("active");
+    function onMove(ev) {
+      var x = ev.touches[0].clientX;
+      var w = startW + (startX - x);
+      sidebar.style.width = Math.min(480, Math.max(220, w)) + "px";
+    }
+    function onUp() {
+      resizer.classList.remove("active");
+      document.removeEventListener("touchmove", onMove);
+      document.removeEventListener("touchend", onUp);
+    }
+    document.addEventListener("touchmove", onMove);
+    document.addEventListener("touchend", onUp);
+  });
 
   document.addEventListener("click", function (e) {
     var head = e.target.closest ? e.target.closest(".tree-head") : null;
