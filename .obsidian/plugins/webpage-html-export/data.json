@@ -10,7 +10,7 @@
     "postProcess": true,
     "displayProgress": true,
     "inlineHTML": false,
-    "exportPath": "D:\\clock_note\\clock_note\\test",
+    "exportPath": "D:\\clock_note\\clock_note\\docs",
     "filesToExport": [
       "all"
     ],
