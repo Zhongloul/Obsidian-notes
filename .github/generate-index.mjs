@@ -150,7 +150,7 @@ const page = `<!DOCTYPE html>
     resizer.classList.add("active");
     document.body.classList.add("resizing");
     function onMove(ev) {
-      var w = startW + (startX - ev.clientX);
+      var w = startW + (ev.clientX - startX);
       if (w < 220) w = 220;
       if (w > 480) w = 480;
       sidebar.style.width = w + "px";
@@ -171,7 +171,7 @@ const page = `<!DOCTYPE html>
     resizer.classList.add("active");
     function onMove(ev) {
       var x = ev.touches[0].clientX;
-      var w = startW + (startX - x);
+      var w = startW + (x - startX);
       sidebar.style.width = Math.min(480, Math.max(220, w)) + "px";
     }
     function onUp() {
