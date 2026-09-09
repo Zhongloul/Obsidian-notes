@@ -6,46 +6,11 @@
 <title>我的笔记</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
-    background: linear-gradient(160deg, #f6f8fb 0%, #eeeff6 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .card {
-    width: 100%;
-    max-width: 640px;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(30, 40, 90, .12);
-    padding: 42px 40px;
-  }
-  h1 {
-    font-size: 26px;
-    color: #26324d;
-    margin-bottom: 6px;
-  }
-  .sub {
-    color: #8a93a8;
-    font-size: 14px;
-    margin-bottom: 26px;
-  }
-  a.note {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 13px 16px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #2f3b57;
-    background: #f4f6fb;
-    border-radius: 10px;
-    transition: background .15s, transform .15s;
-    font-size: 15px;
-  }
+  body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: linear-gradient(160deg, #f6f8fb 0%, #eeeff6 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .card { width: 100%; max-width: 640px; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(30, 40, 90, .12); padding: 42px 40px; }
+  h1 { font-size: 26px; color: #26324d; margin-bottom: 6px; }
+  .sub { color: #8a93a8; font-size: 14px; margin-bottom: 26px; }
+  a.note { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; margin-bottom: 10px; text-decoration: none; color: #2f3b57; background: #f4f6fb; border-radius: 10px; transition: background .15s, transform .15s; font-size: 15px; }
   a.note:hover { background: #e8edfa; transform: translateX(3px); }
   a.note .arrow { color: #9aa4bd; font-size: 13px; }
   #empty { color: #8a93a8; font-size: 14px; padding: 12px 0; }
@@ -53,35 +18,53 @@
 </style>
 </head>
 <body>
-  <div class="card">
-    <h1>我的笔记</h1>
-    <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧有导航树）</div>
-    <div id="list"><div id="empty">正在加载笔记列表…</div></div>
-    <div class="hint">提示：进入任意页面后，左侧即为文件导航树，右上角可搜索。</div>
+<div class="card">
+  <h1>我的笔记</h1>
+  <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧有导航树）</div>
+  <div id="list">
+<a class="note" href="充电相关/锂电池充电基础知识.html"><span>锂电池充电基础知识</span><span class="arrow">-></span></a>
+<a class="note" href="充电相关/assets/image-20260720144545-3v3ftvh.html"><span>image-20260720144545-3v3ftvh</span><span class="arrow">-></span></a>
+<a class="note" href="充电相关/lx充电体系.html"><span>lx充电体系</span><span class="arrow">-></span></a>
+<a class="note" href="蓝牙/音乐间接性卡顿.html"><span>音乐间接性卡顿</span><span class="arrow">-></span></a>
+<a class="note" href="蓝牙/ble通信机制.html"><span>ble通信机制</span><span class="arrow">-></span></a>
+<a class="note" href="蓝牙/br／edr通信机制.html"><span>br／edr通信机制</span><span class="arrow">-></span></a>
+<a class="note" href="蓝牙/sbc编码.html"><span>sbc编码</span><span class="arrow">-></span></a>
+<a class="note" href="bis/结合ellisys空口实例分析le-audio-bis广播.html"><span>结合ellisys空口实例分析le-audio-bis广播</span><span class="arrow">-></span></a>
+<a class="note" href="cis/从hci层浅析le-audio通话建立流程.html"><span>从hci层浅析le-audio通话建立流程</span><span class="arrow">-></span></a>
+<a class="note" href="cis/结合实例从空口分析le-audio-iso（音乐和通话）.html"><span>结合实例从空口分析le-audio-iso（音乐和通话）</span><span class="arrow">-></span></a>
+<a class="note" href="cis/结合hci和空口理解-cis.html"><span>结合hci和空口理解-cis</span><span class="arrow">-></span></a>
+<a class="note" href="cis/流程图.html"><span>流程图</span><span class="arrow">-></span></a>
+<a class="note" href="cis/通话tbs和ccp.html"><span>通话tbs和ccp</span><span class="arrow">-></span></a>
+<a class="note" href="cis/音乐mcs和mcp(media-control-service／profile).html"><span>音乐mcs和mcp(media-control-service／profile)</span><span class="arrow">-></span></a>
+<a class="note" href="cis/ascs(audio-stream-control-service).html"><span>ascs(audio-stream-control-service)</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/bluetooth-diagram-2-20260729201104-v0rviae.html"><span>bluetooth-diagram-2-20260729201104-v0rviae</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/bluetooth-diagram-20260729201249-clgwutr.html"><span>bluetooth-diagram-20260729201249-clgwutr</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/bluetooth-diagram-3-20260729202340-ipbt0c7.html"><span>bluetooth-diagram-3-20260729202340-ipbt0c7</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/bluetooth-diagram-4-20260729210146-a74pf7y.html"><span>bluetooth-diagram-4-20260729210146-a74pf7y</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/image-20260724141443-ewj95po.html"><span>image-20260724141443-ewj95po</span><span class="arrow">-></span></a>
+<a class="note" href="cis/assets/image-20260731105001-qugz4ud.html"><span>image-20260731105001-qugz4ud</span><span class="arrow">-></span></a>
+<a class="note" href="cis/cap架构图.html"><span>cap架构图</span><span class="arrow">-></span></a>
+<a class="note" href="cis/cis建立连接过程详解.html"><span>cis建立连接过程详解</span><span class="arrow">-></span></a>
+<a class="note" href="cis/csis(coordinate-sets-identification-service).html"><span>csis(coordinate-sets-identification-service)</span><span class="arrow">-></span></a>
+<a class="note" href="cis/pac(published-audio-capability).html"><span>pac(published-audio-capability)</span><span class="arrow">-></span></a>
+<a class="note" href="cis/transport-delay.html"><span>transport-delay</span><span class="arrow">-></span></a>
+<a class="note" href="cis/vcs(volume-control-profile).html"><span>vcs(volume-control-profile)</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/虚拟地址和逻辑地址.html"><span>虚拟地址和逻辑地址</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/中断机制.html"><span>中断机制</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/assets/从电路底层来了解cpu中断机制-知乎-20260720141242-uyfqb7j.html"><span>从电路底层来了解cpu中断机制-知乎-20260720141242-uyfqb7j</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/assets/芯片框架简述-20260720141335-0ffkvga.html"><span>芯片框架简述-20260720141335-0ffkvga</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/assets/image-20260720141439-hvllxye.html"><span>image-20260720141439-hvllxye</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/lx芯片框架概述.html"><span>lx芯片框架概述</span><span class="arrow">-></span></a>
+<a class="note" href="cpu/risc-v寄存器.html"><span>risc-v寄存器</span><span class="arrow">-></span></a>
+<a class="note" href="hid报表描述符/简单几步，让自定义usb设备也能免驱动运行.html"><span>简单几步，让自定义usb设备也能免驱动运行</span><span class="arrow">-></span></a>
+<a class="note" href="hid报表描述符/使用微软系统描述符2.0制作免驱动自定义usb设备.html"><span>使用微软系统描述符2.0制作免驱动自定义usb设备</span><span class="arrow">-></span></a>
+<a class="note" href="hid报表描述符/hid报表描述符.html"><span>hid报表描述符</span><span class="arrow">-></span></a>
+<a class="note" href="site-lib/html/file-tree-content.html"><span>file-tree-content</span><span class="arrow">-></span></a>
+<a class="note" href="usb/简单几步，让自定义usb设备也能免驱动运行.html"><span>简单几步，让自定义usb设备也能免驱动运行</span><span class="arrow">-></span></a>
+<a class="note" href="usb/使用微软系统描述符2.0制作免驱动自定义usb设备.html"><span>使用微软系统描述符2.0制作免驱动自定义usb设备</span><span class="arrow">-></span></a>
+<a class="note" href="usb/hid报表描述符.html"><span>hid报表描述符</span><span class="arrow">-></span></a>
   </div>
-  <script>
-    fetch('site-lib/metadata.json')
-      .then(function (r) { return r.json(); })
-      .then(function (meta) {
-        var list = document.getElementById('list');
-        var files = (meta.shownInTree || []).filter(function (f) { return f.endsWith('.html'); });
-        if (!files.length) {
-          list.innerHTML = '<div id="empty">导出目录中没有页面，请重新导出。</div>';
-          return;
-        }
-        files.forEach(function (f) {
-          var label = decodeURIComponent(f.split('/').pop().replace(/\.html$/i, ''));
-          var a = document.createElement('a');
-          a.className = 'note';
-          a.href = f;
-          a.innerHTML = '<span></span><span class="arrow">→</span>';
-          a.firstChild.textContent = label;
-          list.appendChild(a);
-        });
-      })
-      .catch(function () {
-        document.getElementById('empty').textContent = '无法读取列表，请刷新重试。';
-      });
-  </script>
+  <div class="hint">提示：进入任意页面后，左侧即为文件导航树，右上角可搜索。</div>
+</div>
 </body>
 </html>
