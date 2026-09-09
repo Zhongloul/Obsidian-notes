@@ -98,7 +98,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -116,7 +118,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "简单几步，让自定义USB设备也能免驱动运行 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -146,8 +148,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -169,6 +170,68 @@
               "state": {},
               "icon": "git-pull-request",
               "title": "Source Control"
+            }
+          },
+          {
+            "id": "55cf172d16724ca8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "USB/简单几步，让自定义USB设备也能免驱动运行.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "592b6acc1422d1f1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "USB/简单几步，让自定义USB设备也能免驱动运行.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "cc42e9920b2ce0cf",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "d97d72f1e1bd083f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
             }
           }
         ]
@@ -193,32 +256,51 @@
   },
   "active": "08044944ed8a381c",
   "lastOpenFiles": [
-    "docs/site-lib/search-index.json",
-    "docs/site-lib/metadata.json",
-    "USB/使用微软系统描述符2.0制作免驱动自定义USB设备.md",
-    "docs/site-lib/styles/obsidian.css",
-    "docs/site-lib/styles/main-styles.css",
-    "docs/site-lib/styles/global-variable-styles.css",
-    "docs/site-lib/scripts/webpage.js",
-    "docs/site-lib/scripts/graph-wasm.js",
-    "docs/site-lib/scripts/graph-wasm.wasm",
-    "docs/site-lib/media/favicon.png",
-    "docs/site-lib/scripts/graph-render-worker.js",
-    "docs/site-lib/media/6155340132a851f6089e.svg",
-    "docs/site-lib/media/2308ab1944a6bfa5c5b8.svg",
-    "docs/site-lib/html/file-tree-content.html",
-    "docs/site-lib/fonts/c504db5c06caaf7cdfba.woff2",
-    "USB/HID报表描述符.md",
-    "USB/简单几步，让自定义USB设备也能免驱动运行.md",
-    "test/docs/site-lib/media/favicon.png",
-    "test/docs/site-lib/media/6155340132a851f6089e.svg",
-    "test/docs/site-lib/media/2308ab1944a6bfa5c5b8.svg",
-    "test/docs/test/site-lib/media/favicon.png",
-    "test/docs/test/site-lib/media/6155340132a851f6089e.svg",
-    "test/docs/test/site-lib/media/2308ab1944a6bfa5c5b8.svg",
-    "test/site-lib/media/favicon.png",
-    "欢迎.md",
-    "未命名.md",
-    "未命名 1.md"
+    "HID报表描述符/HID报表描述符.md",
+    "docs/cpu/assets/image-20260720141439-hvllxye.png",
+    "docs/cpu/assets/芯片框架简述-20260720141335-0ffkvga.pdf",
+    "docs/cpu/assets/从电路底层来了解cpu中断机制-知乎-20260720141242-uyfqb7j.pdf",
+    "docs/cis/assets/image-20260731105001-qugz4ud.png",
+    "docs/cis/assets/image-20260724141443-ewj95po.png",
+    "docs/cis/assets/bluetooth-diagram-20260729201249-clgwutr.png",
+    "docs/cis/assets/bluetooth-diagram-4-20260729210146-a74pf7y.png",
+    "docs/cis/assets/bluetooth-diagram-3-20260729202340-ipbt0c7.png",
+    "docs/cis/assets/bluetooth-diagram-2-20260729201104-v0rviae.png",
+    "docs/充电相关/assets/image-20260720144545-3v3ftvh.png",
+    "docs/cpu/assets/芯片框架简述-20260720141335-0ffkvga.html",
+    "docs/cpu/assets/从电路底层来了解cpu中断机制-知乎-20260720141242-uyfqb7j.html",
+    "docs/cpu/assets/image-20260720141439-hvllxye.html",
+    "docs/cpu/assets",
+    "docs/充电相关/assets/image-20260720144545-3v3ftvh.html",
+    "docs/充电相关/assets",
+    "docs/cis/assets/image-20260724141443-ewj95po.html",
+    "docs/cis/assets/bluetooth-diagram-2-20260729201104-v0rviae.html",
+    "HID报表描述符/使用微软系统描述符2.0制作免驱动自定义USB设备.md",
+    "HID报表描述符/简单几步，让自定义USB设备也能免驱动运行.md",
+    "CIS/VCS(Volume Control Profile).md",
+    "CIS/transport delay.md",
+    "CIS/PAC(Published Audio Capability).md",
+    "CIS/CSIS(Coordinate Sets Identification service).md",
+    "CIS/CIS建立连接过程详解.md",
+    "CIS/CAP架构图.md",
+    "CIS/ASCS(Audio Stream Control Service).md",
+    "CIS/音乐MCS和MCP(Media Control Service／Profile).md",
+    "CIS/通话TBS和CCP.md",
+    "CIS/流程图.md",
+    "CIS/结合HCI和空口理解 CIS.md",
+    "CIS/结合实例从HCI分析LE AUDIO实现立体声录音.md",
+    "CIS/结合实例从空口分析LE AUDIO ISO（音乐和通话）.md",
+    "CIS/从HCI层浅析LE Audio通话建立流程.md",
+    "BIS/结合Ellisys空口实例分析LE AUDIO BIS广播.md",
+    "蓝牙/SBC编码.md",
+    "蓝牙/BR／EDR通信机制.md",
+    "蓝牙/BLE通信机制.md",
+    "蓝牙/音乐间接性卡顿.md",
+    "cpu/RISC-V寄存器.md",
+    "cpu/lx芯片框架概述.md",
+    "cpu/中断机制.md",
+    "cpu/虚拟地址和逻辑地址.md",
+    "充电相关/assets/image-20260720144545-3v3ftvh.png",
+    "cpu/assets/image-20260720141439-hvllxye.png"
   ]
 }
