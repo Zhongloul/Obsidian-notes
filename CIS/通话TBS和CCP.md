@@ -1,4 +1,3 @@
-# 通话TBS和CCP
 
 Bluetooth LE AUDIO通话的TBS和CCP就是类似于经典蓝牙HFP电话控制协议，也是作为LE AUDIO电话控制协议，TBS就是Telephoney Bear Service, 这个是服务端位于手机侧，类似于HFP Gateway。CCP是 Call Control Profile，这个是Client位于耳机端，可以理解为HFP Client，下面还是以手机和耳机为例，结合空口来理解TBS和CCP：
 

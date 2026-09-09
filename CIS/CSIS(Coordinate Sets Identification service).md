@@ -1,4 +1,3 @@
-# CSIS(Coordinate Sets Identification service)
 
 CSIS是Coordinate Sets Identification service,翻译过来就是协调集识别服务。什么是协调集，可以理解为具有相同特征的一伙设备，最典型的就是左右两个蓝牙耳机是一个协调集，所以它们具有相同的协调集标志，但是具有相同协调集的设备要如何识别，这就是本篇需要讲解的内容，其实还是比较简单，下面还是以手机和蓝牙耳机为例，看看BLE AUDIO CSIS是如何工作：
 

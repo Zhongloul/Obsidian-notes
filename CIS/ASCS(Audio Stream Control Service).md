@@ -1,4 +1,3 @@
-# ASCS(Audio Stream Control Service)
 
 ASCS：AUDIO STREAM CONTROL SERVICE，音频流控制服务，顾名思义会对音频流的一些参数去做控制的服务，下面我们还是以手机和耳机为例，结合空口来分析ASCS都有哪些内容：
 

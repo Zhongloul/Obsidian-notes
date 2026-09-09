@@ -1,4 +1,3 @@
-# PAC(Published Audio Capability)
 
 PAC，published audio capability用于声明audio服务能力，是Bluetooth LE AUDIO核心服务之一，下面以手机和耳机为例，结合空口分析PAC到底有哪些交互内容：
 

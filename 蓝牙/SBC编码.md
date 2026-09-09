@@ -1,4 +1,3 @@
-# SBC编码
 
 ## 为什么 SBC 每帧采样数 = blocks × subbands？
 

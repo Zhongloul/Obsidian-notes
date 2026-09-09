@@ -1,4 +1,3 @@
-# VCS(Volume Control Profile)
 
 ### 背景
 

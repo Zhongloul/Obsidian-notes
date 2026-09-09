@@ -1,4 +1,3 @@
-# 音乐MCS和MCP(Media Control Service／Profile)
 
 Bluetooth LE AUDIO的MCS和MCP就是类似于经典蓝牙AVRCP协议，也是作为媒体控制协议，MCS就是Media control service, 这个是服务端位于手机侧，类似于AVRCP TG。MCP是 Media control profile，这个是client位于耳机端，可以理解为AVRCP Controller，下面还是以手机和耳机为例，结合空口来理解MCS和MCP：
 

@@ -1,4 +1,3 @@
-# 结合实例从HCI分析LE AUDIO实现立体声录音
 
 ### LE AUDIO录音的优势
 

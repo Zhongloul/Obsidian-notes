@@ -1,4 +1,3 @@
-# CIS建立连接过程详解
 
 最近公司的项目要在蓝牙耳机加入BLE Audio(CIS)的支持，我承担了此项艰巨任务。下面从手机侧抓取的btsnoop的HCI层来分析LEA-CIS的连接建立过程，从LE连接建立到LEA Service查询，再到音乐起播建立CIS连接：
 
