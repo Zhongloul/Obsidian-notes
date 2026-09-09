@@ -1,8 +1,9 @@
 import { readdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join } from "node:path";
 
 const docsDir = new URL("../docs", import.meta.url).pathname;
 const outPath = join(docsDir, "index.html");
+const homePath = join(docsDir, "Home.html");
 
 function collect(dir, prefix, out) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -16,18 +17,32 @@ function collect(dir, prefix, out) {
   }
 }
 
-const pages = [];
-collect(docsDir, "", pages);
-pages.sort((a, b) => a.localeCompare(b, "zh"));
-
-const listHtml = pages
-  .map((f) => {
-    const label = decodeURIComponent(f.split("/").pop().replace(/\.html$/i, ""));
-    return `<a class="note" href="${f}"><span>${label}</span><span class="arrow">-></span></a>`;
-  })
-  .join("\n");
-
-const page = `<!DOCTYPE html>
+let page;
+if (existsSync(homePath)) {
+  page = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0; url=Home.html">
+<title>我的笔记</title>
+<script>location.replace("Home.html");</script>
+</head>
+<body>
+<p>正在进入笔记首页… 若未跳转，请<a href="Home.html">点击这里</a>。</p>
+</body>
+</html>
+`;
+} else {
+  const pages = [];
+  collect(docsDir, "", pages);
+  pages.sort((a, b) => a.localeCompare(b, "zh"));
+  const listHtml = pages
+    .map((f) => {
+      const label = decodeURIComponent(f.split("/").pop().replace(/\.html$/i, ""));
+      return `<a class="note" href="${f}"><span>${label}</span><span class="arrow">-></span></a>`;
+    })
+    .join("\n");
+  page = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -42,7 +57,6 @@ const page = `<!DOCTYPE html>
   a.note { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; margin-bottom: 10px; text-decoration: none; color: #2f3b57; background: #f4f6fb; border-radius: 10px; transition: background .15s, transform .15s; font-size: 15px; }
   a.note:hover { background: #e8edfa; transform: translateX(3px); }
   a.note .arrow { color: #9aa4bd; font-size: 13px; }
-  #empty { color: #8a93a8; font-size: 14px; padding: 12px 0; }
   .hint { margin-top: 22px; font-size: 12.5px; color: #a0a8ba; line-height: 1.8; }
 </style>
 </head>
@@ -51,18 +65,19 @@ const page = `<!DOCTYPE html>
   <h1>我的笔记</h1>
   <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧有导航树）</div>
   <div id="list">
-${listHtml || '<div id="empty">导出目录中还没有页面。</div>'}
+${listHtml || '<div style="color:#8a93a8;font-size:14px;padding:12px 0;">导出目录中还没有页面。</div>'}
   </div>
   <div class="hint">提示：进入任意页面后，左侧即为文件导航树，右上角可搜索。</div>
 </div>
 </body>
 </html>
 `;
+}
 
 const old = existsSync(outPath) ? readFileSync(outPath, "utf8") : "";
 if (old !== page) {
   writeFileSync(outPath, page);
-  console.log("index.html updated, pages:", pages.length);
+  console.log("index.html updated");
 } else {
   console.log("index.html unchanged");
 }
