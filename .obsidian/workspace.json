@@ -200,6 +200,7 @@
   "active": "99873c2595b8e4f8",
   "lastOpenFiles": [
     "docs/keep-site.txt",
+    "docs/home.html",
     "Home.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
@@ -227,7 +228,6 @@
     "CPU/RISC-V寄存器.md",
     "CIS/流程图.md",
     "CIS/transport delay.md",
-    "docs/home.html",
     "CPU/从电路底层来了解CPU中断机制 - 知乎.pdf",
     "未命名 1.canvas",
     "未命名.canvas",
@@ -243,7 +243,6 @@
     "CIS/assets/bluetooth-diagram 4-20260729210146-a74pf7y.png",
     "CIS/assets/bluetooth-diagram 3-20260729202340-ipbt0c7.png",
     "CIS/assets/bluetooth-diagram 2-20260729201104-v0rviae.png",
-    "CIS/assets",
     "docs/cpu/assets/image-20260720141439-hvllxye.png",
     "docs/cis/assets/image-20260731105001-qugz4ud.png",
     "docs/cis/assets/image-20260724141443-ewj95po.png"
