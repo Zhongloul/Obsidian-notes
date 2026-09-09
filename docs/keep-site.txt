@@ -3,3 +3,4 @@ collapsible nav v2
 resizer
 dirfix
 nocache
+default-collapsed

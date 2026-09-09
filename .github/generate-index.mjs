@@ -54,7 +54,7 @@ const dataJson = [];
 for (const [folder, items] of groupMap) {
   items.sort((a, b) => a.label.localeCompare(b.label, "zh"));
   const dispFolder = folder ? folder : "根目录";
-  treeHtml.push('<div class="tree-folder" data-folder="' + clean(folder) + '">');
+  treeHtml.push('<div class="tree-folder collapsed" data-folder="' + clean(folder) + '">');
   treeHtml.push('<div class="tree-head"><span class="arrow">&#9662;</span>' + clean(dispFolder) + "<span class='count'>" + items.length + "</span></div>");
   treeHtml.push('<ul class="tree-list">');
   for (const it of items) {
