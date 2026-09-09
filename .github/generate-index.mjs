@@ -38,6 +38,7 @@ const groupMap = new Map();
 for (const f of pages) {
   const parts = f.split("/");
   const folder = parts.length > 1 ? parts[0] : "";
+  if (!folder) continue;
   const label = decodeURIComponent(parts[parts.length - 1].replace(/\.html$/i, ""));
   const path = f.replace(/ /g, "%20");
   if (!groupMap.has(folder)) groupMap.set(folder, []);
