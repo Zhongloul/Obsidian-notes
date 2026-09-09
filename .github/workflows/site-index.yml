@@ -1,0 +1,40 @@
+name: Build Site Index
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-index
+  cancel-in-progress: true
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate index.html
+        run: node .github/generate-index.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "site-index-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          if git diff --cached --quiet; then
+            echo "index.html unchanged, skip"
+          else
+            git commit -m "Auto update site index"
+            git push
+          fi
