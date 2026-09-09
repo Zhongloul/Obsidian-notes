@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CIS/流程图.md",
+                "file": "Home.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "流程图"
+              "title": "Home"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CIS/流程图.md",
+                "file": "Home.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
@@ -199,7 +199,6 @@
   },
   "active": "99873c2595b8e4f8",
   "lastOpenFiles": [
-    "CPU/RISC-V寄存器.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
     "USB/使用微软系统描述符2.0制作免驱动自定义USB设备.md",
@@ -223,9 +222,11 @@
     "CPU/虚拟地址和逻辑地址.md",
     "充电相关/锂电池充电基础知识.md",
     "充电相关/lx充电体系.md",
+    "CPU/RISC-V寄存器.md",
     "CIS/流程图.md",
     "CIS/transport delay.md",
     "CIS/CAP架构图.md",
+    "docs/home.html",
     "CPU/从电路底层来了解CPU中断机制 - 知乎.pdf",
     "未命名 1.canvas",
     "未命名.canvas",
@@ -242,7 +243,6 @@
     "CIS/assets/bluetooth-diagram 3-20260729202340-ipbt0c7.png",
     "CIS/assets/bluetooth-diagram 2-20260729201104-v0rviae.png",
     "CIS/assets",
-    "docs/site-lib/fonts/mathjax_sansserif-bold.woff",
     "docs/cpu/assets/image-20260720141439-hvllxye.png",
     "docs/cis/assets/image-20260731105001-qugz4ud.png",
     "docs/cis/assets/image-20260724141443-ewj95po.png"
