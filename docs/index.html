@@ -6,57 +6,85 @@
 <title>我的笔记</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: linear-gradient(160deg, #f6f8fb 0%, #eeeff6 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
-  .card { width: 100%; max-width: 640px; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(30, 40, 90, .12); padding: 42px 40px; }
-  h1 { font-size: 26px; color: #26324d; margin-bottom: 6px; }
-  .sub { color: #8a93a8; font-size: 14px; margin-bottom: 26px; }
-  a.note { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; margin-bottom: 10px; text-decoration: none; color: #2f3b57; background: #f4f6fb; border-radius: 10px; transition: background .15s, transform .15s; font-size: 15px; }
-  a.note:hover { background: #e8edfa; transform: translateX(3px); }
-  a.note .arrow { color: #9aa4bd; font-size: 13px; }
-  .hint { margin-top: 22px; font-size: 12.5px; color: #a0a8ba; line-height: 1.8; }
+  body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: #f6f8fb; color: #26324d; }
+  .layout { display: flex; min-height: 100vh; }
+  #sidebar { width: 300px; flex-shrink: 0; background: #ffffff; border-right: 1px solid #e6e9f2; padding: 18px 14px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .brand { font-size: 18px; font-weight: 700; padding: 0 6px 12px; }
+  #search { width: 100%; padding: 9px 12px; border: 1px solid #dde2ee; border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 12px; }
+  #search:focus { border-color: #7a8cff; }
+  .tree-folder { margin-bottom: 8px; }
+  .tree-head { font-size: 12.5px; color: #8a93a8; font-weight: 600; padding: 6px 6px 4px; display: flex; justify-content: space-between; }
+  .tree-list { list-style: none; }
+  .tree-item a { display: block; padding: 6px 8px; font-size: 13.5px; color: #3b4664; text-decoration: none; border-radius: 6px; line-height: 1.4; }
+  .tree-item a:hover { background: #eef1fb; }
+  .tree-item.hide, .tree-folder.hide { display: none; }
+  main { flex: 1; padding: 34px 38px; max-width: 860px; }
+  h1 { font-size: 26px; margin-bottom: 6px; }
+  .sub { color: #8a93a8; font-size: 14px; margin-bottom: 22px; }
+  #cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  a.note { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; text-decoration: none; color: #2f3b57; background: #ffffff; border: 1px solid #e6e9f2; border-radius: 10px; font-size: 14px; transition: background .15s, transform .15s; }
+  a.note:hover { background: #eef1fb; transform: translateY(-1px); }
+  a.note .arrow { color: #9aa4bd; font-size: 12px; }
+  a.note.hide, #no-result { display: none; }
+  #no-result.show { display: block; color: #8a93a8; margin-top: 20px; }
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    #sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid #e6e9f2; }
+    main { padding: 22px 18px; }
+    #cards { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>我的笔记</h1>
-  <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧有导航树）</div>
-  <div id="list">
-<a class="note" href="充电相关/锂电池充电基础知识.html"><span>锂电池充电基础知识</span><span class="arrow">-></span></a>
-<a class="note" href="充电相关/lx充电体系.html"><span>lx充电体系</span><span class="arrow">-></span></a>
-<a class="note" href="蓝牙/音乐间接性卡顿.html"><span>音乐间接性卡顿</span><span class="arrow">-></span></a>
-<a class="note" href="蓝牙/ble通信机制.html"><span>ble通信机制</span><span class="arrow">-></span></a>
-<a class="note" href="蓝牙/br／edr通信机制.html"><span>br／edr通信机制</span><span class="arrow">-></span></a>
-<a class="note" href="蓝牙/sbc编码.html"><span>sbc编码</span><span class="arrow">-></span></a>
-<a class="note" href="bis/结合ellisys空口实例分析le-audio-bis广播.html"><span>结合ellisys空口实例分析le-audio-bis广播</span><span class="arrow">-></span></a>
-<a class="note" href="cis/从hci层浅析le-audio通话建立流程.html"><span>从hci层浅析le-audio通话建立流程</span><span class="arrow">-></span></a>
-<a class="note" href="cis/结合实例从空口分析le-audio-iso（音乐和通话）.html"><span>结合实例从空口分析le-audio-iso（音乐和通话）</span><span class="arrow">-></span></a>
-<a class="note" href="cis/结合实例从hci分析le-audio实现立体声录音.html"><span>结合实例从hci分析le-audio实现立体声录音</span><span class="arrow">-></span></a>
-<a class="note" href="cis/结合hci和空口理解-cis.html"><span>结合hci和空口理解-cis</span><span class="arrow">-></span></a>
-<a class="note" href="cis/流程图.html"><span>流程图</span><span class="arrow">-></span></a>
-<a class="note" href="cis/通话tbs和ccp.html"><span>通话tbs和ccp</span><span class="arrow">-></span></a>
-<a class="note" href="cis/音乐mcs和mcp(media-control-service／profile).html"><span>音乐mcs和mcp(media-control-service／profile)</span><span class="arrow">-></span></a>
-<a class="note" href="cis/ascs(audio-stream-control-service).html"><span>ascs(audio-stream-control-service)</span><span class="arrow">-></span></a>
-<a class="note" href="cis/cap架构图.html"><span>cap架构图</span><span class="arrow">-></span></a>
-<a class="note" href="cis/cis建立连接过程详解.html"><span>cis建立连接过程详解</span><span class="arrow">-></span></a>
-<a class="note" href="cis/csis(coordinate-sets-identification-service).html"><span>csis(coordinate-sets-identification-service)</span><span class="arrow">-></span></a>
-<a class="note" href="cis/pac(published-audio-capability).html"><span>pac(published-audio-capability)</span><span class="arrow">-></span></a>
-<a class="note" href="cis/transport-delay.html"><span>transport-delay</span><span class="arrow">-></span></a>
-<a class="note" href="cis/vcs(volume-control-profile).html"><span>vcs(volume-control-profile)</span><span class="arrow">-></span></a>
-<a class="note" href="cpu/从电路底层来了解cpu中断机制-知乎.html"><span>从电路底层来了解cpu中断机制-知乎</span><span class="arrow">-></span></a>
-<a class="note" href="cpu/虚拟地址和逻辑地址.html"><span>虚拟地址和逻辑地址</span><span class="arrow">-></span></a>
-<a class="note" href="cpu/中断机制.html"><span>中断机制</span><span class="arrow">-></span></a>
-<a class="note" href="cpu/lx芯片框架概述.html"><span>lx芯片框架概述</span><span class="arrow">-></span></a>
-<a class="note" href="cpu/risc-v寄存器.html"><span>risc-v寄存器</span><span class="arrow">-></span></a>
-<a class="note" href="hid报表描述符/简单几步，让自定义usb设备也能免驱动运行.html"><span>简单几步，让自定义usb设备也能免驱动运行</span><span class="arrow">-></span></a>
-<a class="note" href="hid报表描述符/使用微软系统描述符2.0制作免驱动自定义usb设备.html"><span>使用微软系统描述符2.0制作免驱动自定义usb设备</span><span class="arrow">-></span></a>
-<a class="note" href="hid报表描述符/hid报表描述符.html"><span>hid报表描述符</span><span class="arrow">-></span></a>
-<a class="note" href="home.html"><span>home</span><span class="arrow">-></span></a>
-<a class="note" href="site-lib/html/file-tree-content.html"><span>file-tree-content</span><span class="arrow">-></span></a>
-<a class="note" href="usb/简单几步，让自定义usb设备也能免驱动运行.html"><span>简单几步，让自定义usb设备也能免驱动运行</span><span class="arrow">-></span></a>
-<a class="note" href="usb/使用微软系统描述符2.0制作免驱动自定义usb设备.html"><span>使用微软系统描述符2.0制作免驱动自定义usb设备</span><span class="arrow">-></span></a>
-<a class="note" href="usb/hid报表描述符.html"><span>hid报表描述符</span><span class="arrow">-></span></a>
-  </div>
-  <div class="hint">提示：进入任意页面后，左侧即为文件导航树，右上角可搜索。</div>
+<div class="layout">
+  <aside id="sidebar">
+    <div class="brand">我的笔记</div>
+    <input id="search" type="search" placeholder="搜索笔记..." autocomplete="off">
+    <nav id="tree"></nav>
+  </aside>
+  <main>
+    <h1>我的笔记</h1>
+    <div class="sub">Obsidian 导出 · 点击任意一篇查看（左侧为导航，上方可搜索）</div>
+    <div id="cards"></div>
+    <div id="no-result">没有找到匹配的笔记。</div>
+  </main>
 </div>
+<script>
+(function () {
+  var DATA = [["充电相关/锂电池充电基础知识","充电相关","锂电池充电基础知识","充电相关/锂电池充电基础知识.html"],["充电相关/lx充电体系","充电相关","lx充电体系","充电相关/lx充电体系.html"],["蓝牙/音乐间接性卡顿","蓝牙","音乐间接性卡顿","蓝牙/音乐间接性卡顿.html"],["蓝牙/ble通信机制","蓝牙","ble通信机制","蓝牙/ble通信机制.html"],["蓝牙/br／edr通信机制","蓝牙","br／edr通信机制","蓝牙/br／edr通信机制.html"],["蓝牙/sbc编码","蓝牙","sbc编码","蓝牙/sbc编码.html"],["bis/结合ellisys空口实例分析le-audio-bis广播","bis","结合ellisys空口实例分析le-audio-bis广播","bis/结合ellisys空口实例分析le-audio-bis广播.html"],["cis/从hci层浅析le-audio通话建立流程","cis","从hci层浅析le-audio通话建立流程","cis/从hci层浅析le-audio通话建立流程.html"],["cis/结合实例从空口分析le-audio-iso（音乐和通话）","cis","结合实例从空口分析le-audio-iso（音乐和通话）","cis/结合实例从空口分析le-audio-iso（音乐和通话）.html"],["cis/结合实例从hci分析le-audio实现立体声录音","cis","结合实例从hci分析le-audio实现立体声录音","cis/结合实例从hci分析le-audio实现立体声录音.html"],["cis/结合hci和空口理解-cis","cis","结合hci和空口理解-cis","cis/结合hci和空口理解-cis.html"],["cis/流程图","cis","流程图","cis/流程图.html"],["cis/通话tbs和ccp","cis","通话tbs和ccp","cis/通话tbs和ccp.html"],["cis/音乐mcs和mcp(media-control-service／profile)","cis","音乐mcs和mcp(media-control-service／profile)","cis/音乐mcs和mcp(media-control-service／profile).html"],["cis/ascs(audio-stream-control-service)","cis","ascs(audio-stream-control-service)","cis/ascs(audio-stream-control-service).html"],["cis/cap架构图","cis","cap架构图","cis/cap架构图.html"],["cis/cis建立连接过程详解","cis","cis建立连接过程详解","cis/cis建立连接过程详解.html"],["cis/csis(coordinate-sets-identification-service)","cis","csis(coordinate-sets-identification-service)","cis/csis(coordinate-sets-identification-service).html"],["cis/pac(published-audio-capability)","cis","pac(published-audio-capability)","cis/pac(published-audio-capability).html"],["cis/transport-delay","cis","transport-delay","cis/transport-delay.html"],["cis/vcs(volume-control-profile)","cis","vcs(volume-control-profile)","cis/vcs(volume-control-profile).html"],["cpu/从电路底层来了解cpu中断机制-知乎","cpu","从电路底层来了解cpu中断机制-知乎","cpu/从电路底层来了解cpu中断机制-知乎.html"],["cpu/虚拟地址和逻辑地址","cpu","虚拟地址和逻辑地址","cpu/虚拟地址和逻辑地址.html"],["cpu/risc-v寄存器","cpu","risc-v寄存器","cpu/risc-v寄存器.html"],["usb/简单几步，让自定义usb设备也能免驱动运行","usb","简单几步，让自定义usb设备也能免驱动运行","usb/简单几步，让自定义usb设备也能免驱动运行.html"],["usb/使用微软系统描述符2.0制作免驱动自定义usb设备","usb","使用微软系统描述符2.0制作免驱动自定义usb设备","usb/使用微软系统描述符2.0制作免驱动自定义usb设备.html"],["usb/hid报表描述符","usb","hid报表描述符","usb/hid报表描述符.html"],["/home","","home","home.html"]];
+  var tree = document.getElementById("tree");
+  var cards = document.getElementById("cards");
+  var search = document.getElementById("search");
+  var items = [];
+
+  function build() {
+    tree.innerHTML = "<div class=\"tree-folder\" data-folder=\"充电相关\"><div class=\"tree-head\">充电相关<span class='count'>2</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"充电相关/锂电池充电基础知识.html\" data-key=\"充电相关/锂电池充电基础知识\">锂电池充电基础知识</a></li><li class=\"tree-item\"><a href=\"充电相关/lx充电体系.html\" data-key=\"充电相关/lx充电体系\">lx充电体系</a></li></ul></div><div class=\"tree-folder\" data-folder=\"蓝牙\"><div class=\"tree-head\">蓝牙<span class='count'>4</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"蓝牙/音乐间接性卡顿.html\" data-key=\"蓝牙/音乐间接性卡顿\">音乐间接性卡顿</a></li><li class=\"tree-item\"><a href=\"蓝牙/ble通信机制.html\" data-key=\"蓝牙/ble通信机制\">ble通信机制</a></li><li class=\"tree-item\"><a href=\"蓝牙/br／edr通信机制.html\" data-key=\"蓝牙/br／edr通信机制\">br／edr通信机制</a></li><li class=\"tree-item\"><a href=\"蓝牙/sbc编码.html\" data-key=\"蓝牙/sbc编码\">sbc编码</a></li></ul></div><div class=\"tree-folder\" data-folder=\"bis\"><div class=\"tree-head\">bis<span class='count'>1</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"bis/结合ellisys空口实例分析le-audio-bis广播.html\" data-key=\"bis/结合ellisys空口实例分析le-audio-bis广播\">结合ellisys空口实例分析le-audio-bis广播</a></li></ul></div><div class=\"tree-folder\" data-folder=\"cis\"><div class=\"tree-head\">cis<span class='count'>14</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"cis/从hci层浅析le-audio通话建立流程.html\" data-key=\"cis/从hci层浅析le-audio通话建立流程\">从hci层浅析le-audio通话建立流程</a></li><li class=\"tree-item\"><a href=\"cis/结合实例从空口分析le-audio-iso（音乐和通话）.html\" data-key=\"cis/结合实例从空口分析le-audio-iso（音乐和通话）\">结合实例从空口分析le-audio-iso（音乐和通话）</a></li><li class=\"tree-item\"><a href=\"cis/结合实例从hci分析le-audio实现立体声录音.html\" data-key=\"cis/结合实例从hci分析le-audio实现立体声录音\">结合实例从hci分析le-audio实现立体声录音</a></li><li class=\"tree-item\"><a href=\"cis/结合hci和空口理解-cis.html\" data-key=\"cis/结合hci和空口理解-cis\">结合hci和空口理解-cis</a></li><li class=\"tree-item\"><a href=\"cis/流程图.html\" data-key=\"cis/流程图\">流程图</a></li><li class=\"tree-item\"><a href=\"cis/通话tbs和ccp.html\" data-key=\"cis/通话tbs和ccp\">通话tbs和ccp</a></li><li class=\"tree-item\"><a href=\"cis/音乐mcs和mcp(media-control-service／profile).html\" data-key=\"cis/音乐mcs和mcp(media-control-service／profile)\">音乐mcs和mcp(media-control-service／profile)</a></li><li class=\"tree-item\"><a href=\"cis/ascs(audio-stream-control-service).html\" data-key=\"cis/ascs(audio-stream-control-service)\">ascs(audio-stream-control-service)</a></li><li class=\"tree-item\"><a href=\"cis/cap架构图.html\" data-key=\"cis/cap架构图\">cap架构图</a></li><li class=\"tree-item\"><a href=\"cis/cis建立连接过程详解.html\" data-key=\"cis/cis建立连接过程详解\">cis建立连接过程详解</a></li><li class=\"tree-item\"><a href=\"cis/csis(coordinate-sets-identification-service).html\" data-key=\"cis/csis(coordinate-sets-identification-service)\">csis(coordinate-sets-identification-service)</a></li><li class=\"tree-item\"><a href=\"cis/pac(published-audio-capability).html\" data-key=\"cis/pac(published-audio-capability)\">pac(published-audio-capability)</a></li><li class=\"tree-item\"><a href=\"cis/transport-delay.html\" data-key=\"cis/transport-delay\">transport-delay</a></li><li class=\"tree-item\"><a href=\"cis/vcs(volume-control-profile).html\" data-key=\"cis/vcs(volume-control-profile)\">vcs(volume-control-profile)</a></li></ul></div><div class=\"tree-folder\" data-folder=\"cpu\"><div class=\"tree-head\">cpu<span class='count'>3</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"cpu/从电路底层来了解cpu中断机制-知乎.html\" data-key=\"cpu/从电路底层来了解cpu中断机制-知乎\">从电路底层来了解cpu中断机制-知乎</a></li><li class=\"tree-item\"><a href=\"cpu/虚拟地址和逻辑地址.html\" data-key=\"cpu/虚拟地址和逻辑地址\">虚拟地址和逻辑地址</a></li><li class=\"tree-item\"><a href=\"cpu/risc-v寄存器.html\" data-key=\"cpu/risc-v寄存器\">risc-v寄存器</a></li></ul></div><div class=\"tree-folder\" data-folder=\"usb\"><div class=\"tree-head\">usb<span class='count'>3</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"usb/简单几步，让自定义usb设备也能免驱动运行.html\" data-key=\"usb/简单几步，让自定义usb设备也能免驱动运行\">简单几步，让自定义usb设备也能免驱动运行</a></li><li class=\"tree-item\"><a href=\"usb/使用微软系统描述符2.0制作免驱动自定义usb设备.html\" data-key=\"usb/使用微软系统描述符2.0制作免驱动自定义usb设备\">使用微软系统描述符2.0制作免驱动自定义usb设备</a></li><li class=\"tree-item\"><a href=\"usb/hid报表描述符.html\" data-key=\"usb/hid报表描述符\">hid报表描述符</a></li></ul></div><div class=\"tree-folder\" data-folder=\"\"><div class=\"tree-head\">根目录<span class='count'>1</span></div><ul class=\"tree-list\"><li class=\"tree-item\"><a href=\"home.html\" data-key=\"/home\">home</a></li></ul></div>";
+    cards.innerHTML = "<a class=\"note\" href=\"充电相关/锂电池充电基础知识.html\" data-key=\"充电相关/锂电池充电基础知识\"><span>锂电池充电基础知识</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"充电相关/lx充电体系.html\" data-key=\"充电相关/lx充电体系\"><span>lx充电体系</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"蓝牙/音乐间接性卡顿.html\" data-key=\"蓝牙/音乐间接性卡顿\"><span>音乐间接性卡顿</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"蓝牙/ble通信机制.html\" data-key=\"蓝牙/ble通信机制\"><span>ble通信机制</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"蓝牙/br／edr通信机制.html\" data-key=\"蓝牙/br／edr通信机制\"><span>br／edr通信机制</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"蓝牙/sbc编码.html\" data-key=\"蓝牙/sbc编码\"><span>sbc编码</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"bis/结合ellisys空口实例分析le-audio-bis广播.html\" data-key=\"bis/结合ellisys空口实例分析le-audio-bis广播\"><span>结合ellisys空口实例分析le-audio-bis广播</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/从hci层浅析le-audio通话建立流程.html\" data-key=\"cis/从hci层浅析le-audio通话建立流程\"><span>从hci层浅析le-audio通话建立流程</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/结合实例从空口分析le-audio-iso（音乐和通话）.html\" data-key=\"cis/结合实例从空口分析le-audio-iso（音乐和通话）\"><span>结合实例从空口分析le-audio-iso（音乐和通话）</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/结合实例从hci分析le-audio实现立体声录音.html\" data-key=\"cis/结合实例从hci分析le-audio实现立体声录音\"><span>结合实例从hci分析le-audio实现立体声录音</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/结合hci和空口理解-cis.html\" data-key=\"cis/结合hci和空口理解-cis\"><span>结合hci和空口理解-cis</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/流程图.html\" data-key=\"cis/流程图\"><span>流程图</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/通话tbs和ccp.html\" data-key=\"cis/通话tbs和ccp\"><span>通话tbs和ccp</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/音乐mcs和mcp(media-control-service／profile).html\" data-key=\"cis/音乐mcs和mcp(media-control-service／profile)\"><span>音乐mcs和mcp(media-control-service／profile)</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/ascs(audio-stream-control-service).html\" data-key=\"cis/ascs(audio-stream-control-service)\"><span>ascs(audio-stream-control-service)</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/cap架构图.html\" data-key=\"cis/cap架构图\"><span>cap架构图</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/cis建立连接过程详解.html\" data-key=\"cis/cis建立连接过程详解\"><span>cis建立连接过程详解</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/csis(coordinate-sets-identification-service).html\" data-key=\"cis/csis(coordinate-sets-identification-service)\"><span>csis(coordinate-sets-identification-service)</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/pac(published-audio-capability).html\" data-key=\"cis/pac(published-audio-capability)\"><span>pac(published-audio-capability)</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/transport-delay.html\" data-key=\"cis/transport-delay\"><span>transport-delay</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cis/vcs(volume-control-profile).html\" data-key=\"cis/vcs(volume-control-profile)\"><span>vcs(volume-control-profile)</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cpu/从电路底层来了解cpu中断机制-知乎.html\" data-key=\"cpu/从电路底层来了解cpu中断机制-知乎\"><span>从电路底层来了解cpu中断机制-知乎</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cpu/虚拟地址和逻辑地址.html\" data-key=\"cpu/虚拟地址和逻辑地址\"><span>虚拟地址和逻辑地址</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"cpu/risc-v寄存器.html\" data-key=\"cpu/risc-v寄存器\"><span>risc-v寄存器</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"usb/简单几步，让自定义usb设备也能免驱动运行.html\" data-key=\"usb/简单几步，让自定义usb设备也能免驱动运行\"><span>简单几步，让自定义usb设备也能免驱动运行</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"usb/使用微软系统描述符2.0制作免驱动自定义usb设备.html\" data-key=\"usb/使用微软系统描述符2.0制作免驱动自定义usb设备\"><span>使用微软系统描述符2.0制作免驱动自定义usb设备</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"usb/hid报表描述符.html\" data-key=\"usb/hid报表描述符\"><span>hid报表描述符</span><span class='arrow'>-&gt;</span></a><a class=\"note\" href=\"home.html\" data-key=\"/home\"><span>home</span><span class='arrow'>-&gt;</span></a>";
+    items = DATA.map(function (d) { return { key: d[0], folder: d[1], label: d[2], path: d[3] }; });
+  }
+  build();
+
+  search.addEventListener("input", function () {
+    var q = search.value.trim().toLowerCase();
+    var cardNodes = cards.querySelectorAll(".note");
+    for (var i = 0; i < items.length; i++) {
+      var hit = !q || items[i].label.toLowerCase().indexOf(q) >= 0 || items[i].folder.toLowerCase().indexOf(q) >= 0;
+      cardNodes[i].classList.toggle("hide", !hit);
+    }
+    var folders = tree.querySelectorAll(".tree-folder");
+    var treeItems = tree.querySelectorAll(".tree-item");
+    for (var j = 0; j < items.length; j++) {
+      var hit2 = !q || items[j].label.toLowerCase().indexOf(q) >= 0 || items[j].folder.toLowerCase().indexOf(q) >= 0;
+      treeItems[j].classList.toggle("hide", !hit2);
+    }
+    for (var k = 0; k < folders.length; k++) {
+      var anyVisible = folders[k].querySelectorAll(".tree-item:not(.hide)").length > 0;
+      folders[k].classList.toggle("hide", !anyVisible);
+    }
+    var anyCard = cards.querySelectorAll(".note:not(.hide)").length > 0;
+    document.getElementById("no-result").classList.toggle("show", !anyCard);
+  });
+})();
+</script>
 </body>
 </html>
