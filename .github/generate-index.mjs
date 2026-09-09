@@ -54,7 +54,7 @@ for (const [folder, items] of groupMap) {
   items.sort((a, b) => a.label.localeCompare(b.label, "zh"));
   const dispFolder = folder ? folder : "根目录";
   treeHtml.push('<div class="tree-folder" data-folder="' + clean(folder) + '">');
-  treeHtml.push('<div class="tree-head">' + clean(dispFolder) + "<span class='count'>" + items.length + "</span></div>");
+  treeHtml.push('<div class="tree-head"><span class="arrow">&#9662;</span>' + clean(dispFolder) + "<span class='count'>" + items.length + "</span></div>");
   treeHtml.push('<ul class="tree-list">');
   for (const it of items) {
     const key = folder + "/" + it.label;
@@ -80,7 +80,12 @@ const page = `<!DOCTYPE html>
   #search { width: 100%; padding: 9px 12px; border: 1px solid #dde2ee; border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 12px; }
   #search:focus { border-color: #7a8cff; }
   .tree-folder { margin-bottom: 8px; }
-  .tree-head { font-size: 12.5px; color: #8a93a8; font-weight: 600; padding: 6px 6px 4px; display: flex; justify-content: space-between; }
+  .tree-folder.collapsed .tree-list { display: none; }
+  .tree-head { font-size: 12.5px; color: #8a93a8; font-weight: 600; padding: 6px 6px 4px; display: flex; align-items: center; gap: 4px; cursor: pointer; user-select: none; border-radius: 6px; }
+  .tree-head:hover { background: #f2f4fb; }
+  .tree-head .arrow { display: inline-block; font-size: 10px; color: #9aa4bd; transition: transform .15s; }
+  .tree-folder.collapsed .tree-head .arrow { transform: rotate(-90deg); }
+  .tree-head .count { margin-left: auto; font-weight: 500; }
   .tree-list { list-style: none; }
   .tree-item a { display: block; padding: 6px 8px; font-size: 13.5px; color: #3b4664; text-decoration: none; border-radius: 6px; line-height: 1.4; }
   .tree-item a:hover { background: #eef1fb; }
@@ -130,6 +135,13 @@ const page = `<!DOCTYPE html>
     items = DATA.map(function (d) { return { key: d[0], folder: d[1], label: d[2], path: d[3] }; });
   }
   build();
+
+  document.addEventListener("click", function (e) {
+    var head = e.target.closest ? e.target.closest(".tree-head") : null;
+    if (head && head.parentElement.classList.contains("tree-folder")) {
+      head.parentElement.classList.toggle("collapsed");
+    }
+  });
 
   search.addEventListener("input", function () {
     var q = search.value.trim().toLowerCase();
