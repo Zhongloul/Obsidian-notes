@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CIS/音乐MCS和MCP(Media Control Service／Profile).md",
+                "file": "CIS/结合HCI和空口理解 CIS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "音乐MCS和MCP(Media Control Service／Profile)"
+              "title": "结合HCI和空口理解 CIS"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CIS/音乐MCS和MCP(Media Control Service／Profile).md",
+                "file": "CIS/结合HCI和空口理解 CIS.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -199,6 +199,7 @@
   },
   "active": "99873c2595b8e4f8",
   "lastOpenFiles": [
+    "CIS/音乐MCS和MCP(Media Control Service／Profile).md",
     "CIS/从HCI层浅析LE Audio通话建立流程.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
@@ -214,7 +215,6 @@
     "CIS/结合实例从HCI分析LE AUDIO实现立体声录音.md",
     "CIS/结合HCI和空口理解 CIS.md",
     "CIS/通话TBS和CCP.md",
-    "CIS/音乐MCS和MCP(Media Control Service／Profile).md",
     "CIS/ASCS(Audio Stream Control Service).md",
     "CIS/CAP架构图.md",
     "CIS/CIS建立连接过程详解.md",
