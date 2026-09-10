@@ -4,3 +4,4 @@ resizer
 dirfix
 nocache
 default-collapsed
+edit-btn

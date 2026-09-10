@@ -28,13 +28,16 @@ jobs:
       - name: Generate index.html
         run: node .github/generate-index.mjs
 
+      - name: Inject edit buttons
+        run: node .github/inject-edit-buttons.mjs
+
       - name: Commit and push if changed
         run: |
           git config user.name "site-index-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/index.html
+          git add docs
           if git diff --cached --quiet; then
-            echo "index.html unchanged, skip"
+            echo "docs unchanged, skip"
           else
             git commit -m "Auto update site index"
             for i in 1 2 3 4 5; do
