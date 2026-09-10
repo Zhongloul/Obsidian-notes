@@ -5,3 +5,4 @@ dirfix
 nocache
 default-collapsed
 edit-btn
+spa-fix
